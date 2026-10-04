@@ -3,7 +3,8 @@
 
 export const site = {
   name: "Alarme Occitanie",
-  url: "https://alarmeoccitanie.fr",
+  // Canonical address: Vercel serves the site on www (alarmeoccitanie.fr redirects to it).
+  url: "https://www.alarmeoccitanie.fr",
   locale: "fr_FR",
   tagline: "Installateur alarme et vidéosurveillance à Montpellier",
 

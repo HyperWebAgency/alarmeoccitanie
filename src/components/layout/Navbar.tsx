@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { site } from "@/lib/site";
-import { mainLinks, offerLinks, quoteHref, serviceLinks, type NavIcon } from "@/lib/navigation";
+import { isLive, mainLinks, offerLinks, quoteHref, serviceLinks, type NavIcon } from "@/lib/navigation";
 import { MobileMenu } from "./MobileMenu";
 
 function PhoneIcon({ className = "" }: { className?: string }) {
@@ -29,6 +29,11 @@ function MenuIcon({ icon: Icon }: { icon: NavIcon }) {
 const navLink = "flex items-center gap-1 whitespace-nowrap text-[0.9rem] font-medium text-navy transition-colors hover:text-gold-dark";
 
 export function Navbar() {
+  // Only pages that exist are linked (see livePaths in src/lib/navigation.ts).
+  const liveServices = serviceLinks.filter((l) => isLive(l.href));
+  const liveOffers = offerLinks.filter((l) => isLive(l.href));
+  const liveMain = mainLinks.filter((l) => isLive(l.href));
+
   return (
     <>
       {/* Desktop logo: absolute, not fixed, so it scrolls away with the top of the page. */}
@@ -64,60 +69,66 @@ export function Navbar() {
         <div className="relative z-10 flex items-center lg:gap-6 lg:rounded-full lg:bg-white/95 lg:px-8 lg:py-2.5 lg:shadow-[0_2px_15px_rgba(0,0,0,0.08)] lg:backdrop-blur-[10px] xl:gap-8">
           {/* Services mega menu — opens on hover and on keyboard focus. The trigger spans the pill's full
               height and the panel hangs from the pill (not the button), so the hover never breaks. */}
-          <div className="group hidden lg:-my-2.5 lg:flex lg:items-center lg:self-stretch">
-            <button
-              type="button"
-              aria-haspopup="true"
-              className={`${navLink} cursor-pointer group-focus-within:text-gold-dark group-hover:text-gold-dark`}
-            >
-              Services
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                <path d="M6 9l6 6 6-6" />
-              </svg>
-            </button>
-            <div className="absolute top-full right-0 hidden w-[min(1180px,calc(100vw-6rem))] pt-4 group-focus-within:block group-hover:block">
-              <div className="max-h-[calc(100dvh-8rem)] overflow-y-auto rounded-[28px] bg-white px-10 pt-9 pb-10 shadow-[0_20px_60px_rgba(14,34,56,0.15)]">
-                <p className="flex items-center gap-3 text-[1.45rem] font-semibold tracking-[0.5px] text-navy uppercase">
-                  <Image src="/images/logo/alarme-occitanie-anneau.svg" alt="" width={22} height={22} className="size-[22px]" />
-                  Services
-                </p>
-                <ul className="mt-7 grid grid-cols-3 gap-x-8 gap-y-8 xl:grid-cols-4">
-                  {serviceLinks.map(({ href, label, description, icon }) => (
-                    <li key={href}>
-                      <Link href={href} className="group/item flex gap-3.5">
-                        <MenuIcon icon={icon} />
-                        <span>
-                          <span className="block text-[1rem] font-semibold text-navy transition-colors group-hover/item:text-gold-dark">
-                            {label}
+          {liveServices.length > 0 && (
+            <div className="group hidden lg:-my-2.5 lg:flex lg:items-center lg:self-stretch">
+              <button
+                type="button"
+                aria-haspopup="true"
+                className={`${navLink} cursor-pointer group-focus-within:text-gold-dark group-hover:text-gold-dark`}
+              >
+                Services
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </button>
+              <div className="absolute top-full right-0 hidden w-[min(1180px,calc(100vw-6rem))] pt-4 group-focus-within:block group-hover:block">
+                <div className="max-h-[calc(100dvh-8rem)] overflow-y-auto rounded-[28px] bg-white px-10 pt-9 pb-10 shadow-[0_20px_60px_rgba(14,34,56,0.15)]">
+                  <p className="flex items-center gap-3 text-[1.45rem] font-semibold tracking-[0.5px] text-navy uppercase">
+                    <Image src="/images/logo/alarme-occitanie-anneau.svg" alt="" width={22} height={22} className="size-[22px]" />
+                    Services
+                  </p>
+                  <ul className="mt-7 grid grid-cols-3 gap-x-8 gap-y-8 xl:grid-cols-4">
+                    {liveServices.map(({ href, label, description, icon }) => (
+                      <li key={href}>
+                        <Link href={href} className="group/item flex gap-3.5">
+                          <MenuIcon icon={icon} />
+                          <span>
+                            <span className="block text-[1rem] font-semibold text-navy transition-colors group-hover/item:text-gold-dark">
+                              {label}
+                            </span>
+                            <span className="mt-1.5 block text-[0.85rem] leading-[1.55] text-[#5b6472]">{description}</span>
                           </span>
-                          <span className="mt-1.5 block text-[0.85rem] leading-[1.55] text-[#5b6472]">{description}</span>
-                        </span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
 
-                <p className="mt-11 flex items-center gap-3 text-[1.45rem] font-semibold tracking-[0.5px] text-navy uppercase">
-                  <Image src="/images/logo/alarme-occitanie-anneau.svg" alt="" width={22} height={22} className="size-[22px]" />
-                  Nos offres
-                </p>
-                <ul className="mt-6 grid grid-cols-3 gap-x-8 xl:grid-cols-4">
-                  {offerLinks.map(({ href, label, icon }) => (
-                    <li key={label}>
-                      <Link href={href} className="group/item flex items-center gap-3.5">
-                        <MenuIcon icon={icon} />
-                        <span className="text-[1rem] font-semibold text-navy transition-colors group-hover/item:text-gold-dark">
-                          {label}
-                        </span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+                  {liveOffers.length > 0 && (
+                    <>
+                      <p className="mt-11 flex items-center gap-3 text-[1.45rem] font-semibold tracking-[0.5px] text-navy uppercase">
+                        <Image src="/images/logo/alarme-occitanie-anneau.svg" alt="" width={22} height={22} className="size-[22px]" />
+                        Nos offres
+                      </p>
+                      <ul className="mt-6 grid grid-cols-3 gap-x-8 xl:grid-cols-4">
+                        {liveOffers.map(({ href, label, icon }) => (
+                          <li key={label}>
+                            <Link href={href} className="group/item flex items-center gap-3.5">
+                              <MenuIcon icon={icon} />
+                              <span className="text-[1rem] font-semibold text-navy transition-colors group-hover/item:text-gold-dark">
+                                {label}
+                              </span>
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </>
+                  )}
+                </div>
               </div>
             </div>
-          </div>
+          )}
 
-          {mainLinks.map((l) => (
+          {liveMain.map((l) => (
             <Link key={l.href} href={l.href} className={`${navLink} hidden lg:flex`}>
               {l.label}
             </Link>

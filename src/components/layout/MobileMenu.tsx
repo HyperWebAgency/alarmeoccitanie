@@ -4,10 +4,13 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { site } from "@/lib/site";
 import { getOpenStatus } from "@/lib/hours";
-import { mainLinks, serviceLinks } from "@/lib/navigation";
+import { isLive, mainLinks, serviceLinks } from "@/lib/navigation";
 
 // Hamburger + half-screen slide-down drawer (mobile/tablet only).
 export function MobileMenu() {
+  // Only pages that exist are linked (see livePaths in src/lib/navigation.ts).
+  const liveServices = serviceLinks.filter((l) => isLive(l.href));
+  const liveMain = mainLinks.filter((l) => isLive(l.href));
   const [open, setOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [status, setStatus] = useState<ReturnType<typeof getOpenStatus> | null>(null);
@@ -71,38 +74,40 @@ export function MobileMenu() {
           open ? "visible translate-y-0" : "invisible -translate-y-full"
         }`}
       >
-        <div>
-          <button
-            type="button"
-            aria-expanded={servicesOpen}
-            onClick={() => setServicesOpen((v) => !v)}
-            className={`${item} flex w-full cursor-pointer items-center justify-between text-left`}
-          >
-            Services
-            <span aria-hidden="true" className={`text-[0.6rem] text-[#999] transition-transform duration-300 ${servicesOpen ? "rotate-180" : ""}`}>
-              ▼
-            </span>
-          </button>
-          <div
-            className={`overflow-hidden rounded-lg bg-[#f8f8f8] transition-all duration-300 ${
-              servicesOpen ? "my-2 max-h-[420px] py-2" : "max-h-0"
-            }`}
-          >
-            {serviceLinks.map((s) => (
-              <Link
-                key={s.href}
-                href={s.href}
-                onClick={close}
-                tabIndex={servicesOpen ? undefined : -1}
-                className="block px-6 py-3 font-urbanist text-base text-[#555] transition-colors hover:text-gold-dark"
-              >
-                {s.label}
-              </Link>
-            ))}
+        {liveServices.length > 0 && (
+          <div>
+            <button
+              type="button"
+              aria-expanded={servicesOpen}
+              onClick={() => setServicesOpen((v) => !v)}
+              className={`${item} flex w-full cursor-pointer items-center justify-between text-left`}
+            >
+              Services
+              <span aria-hidden="true" className={`text-[0.6rem] text-[#999] transition-transform duration-300 ${servicesOpen ? "rotate-180" : ""}`}>
+                ▼
+              </span>
+            </button>
+            <div
+              className={`overflow-hidden rounded-lg bg-[#f8f8f8] transition-all duration-300 ${
+                servicesOpen ? "my-2 max-h-[420px] py-2" : "max-h-0"
+              }`}
+            >
+              {liveServices.map((s) => (
+                <Link
+                  key={s.href}
+                  href={s.href}
+                  onClick={close}
+                  tabIndex={servicesOpen ? undefined : -1}
+                  className="block px-6 py-3 font-urbanist text-base text-[#555] transition-colors hover:text-gold-dark"
+                >
+                  {s.label}
+                </Link>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
 
-        {mainLinks.map((l) => (
+        {liveMain.map((l) => (
           <Link key={l.href} href={l.href} onClick={close} className={item}>
             {l.label}
           </Link>

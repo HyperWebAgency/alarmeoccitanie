@@ -1,13 +1,36 @@
 import Image from "next/image";
 import Link from "next/link";
 import { site } from "@/lib/site";
-import { quoteHref, serviceLinks } from "@/lib/navigation";
+import { Fragment } from "react";
+import { isLive, quoteHref, serviceLinks } from "@/lib/navigation";
 
 // zozo's footer links to its own service pages by a fixed href; we resolve the matching
 // route from the shared navigation data instead of duplicating the paths here.
 function serviceHref(match: string) {
   return serviceLinks.find((s) => s.href.includes(match))!.href;
 }
+
+// Footer link lists. Only pages that exist are shown (see livePaths in src/lib/navigation.ts).
+const navColumns = [
+  [
+    { href: "/", label: "Accueil" },
+    { href: serviceHref("videosurveillance"), label: "Vidéosurveillance" },
+    { href: serviceHref("interphone"), label: "Interphone" },
+    { href: serviceHref("alarme"), label: "Alarme" },
+  ],
+  [
+    { href: "/blog", label: "Blog" },
+    { href: "/faq", label: "FAQ" },
+    { href: "/contact", label: "Contact" },
+  ],
+].map((column) => column.filter((l) => isLive(l.href)));
+
+const legalLinks = [
+  { href: "/mentions-legales", label: "Mentions légales" },
+  { href: "/politique-confidentialite", label: "Politique de confidentialité" },
+  { href: "/conditions-generales", label: "Conditions générales" },
+  { href: "/plan-du-site", label: "Plan du site" },
+].filter((l) => isLive(l.href));
 
 const navLinkClass = "w-fit text-[0.9rem] text-[#333] no-underline transition-all duration-300 hover:pl-2 hover:text-gold-dark";
 const legalLinkClass = "text-[0.85rem] text-[#666] no-underline transition-colors duration-300 hover:text-gold-dark";
@@ -82,31 +105,17 @@ export function Footer() {
 
           <h3 className={`${titleClass} mt-8`}>Navigation</h3>
           <div className="flex flex-wrap gap-12">
-            <nav className="flex flex-col gap-3">
-              <Link href="/" className={navLinkClass}>
-                Accueil
-              </Link>
-              <Link href={serviceHref("videosurveillance")} className={navLinkClass}>
-                Vidéosurveillance
-              </Link>
-              <Link href={serviceHref("interphone")} className={navLinkClass}>
-                Interphone
-              </Link>
-              <Link href={serviceHref("alarme")} className={navLinkClass}>
-                Alarme
-              </Link>
-            </nav>
-            <nav className="flex flex-col gap-3">
-              <Link href="/blog" className={navLinkClass}>
-                Blog
-              </Link>
-              <Link href="/faq" className={navLinkClass}>
-                FAQ
-              </Link>
-              <Link href="/contact" className={navLinkClass}>
-                Contact
-              </Link>
-            </nav>
+            {navColumns
+              .filter((column) => column.length > 0)
+              .map((column, i) => (
+                <nav key={i} className="flex flex-col gap-3">
+                  {column.map((l) => (
+                    <Link key={l.href} href={l.href} className={navLinkClass}>
+                      {l.label}
+                    </Link>
+                  ))}
+                </nav>
+              ))}
           </div>
         </div>
 
@@ -155,21 +164,14 @@ export function Footer() {
             </span>
           </p>
           <div className="flex items-center gap-4 max-[769px]:flex-col max-[769px]:gap-2">
-            <Link href="/mentions-legales" className={legalLinkClass}>
-              Mentions légales
-            </Link>
-            <span className="text-[0.85rem] text-[#d0d0d0] max-[769px]:hidden">&bull;</span>
-            <Link href="/politique-confidentialite" className={legalLinkClass}>
-              Politique de confidentialité
-            </Link>
-            <span className="text-[0.85rem] text-[#d0d0d0] max-[769px]:hidden">&bull;</span>
-            <Link href="/conditions-generales" className={legalLinkClass}>
-              Conditions générales
-            </Link>
-            <span className="text-[0.85rem] text-[#d0d0d0] max-[769px]:hidden">&bull;</span>
-            <Link href="/plan-du-site" className={legalLinkClass}>
-              Plan du site
-            </Link>
+            {legalLinks.map((l, i) => (
+              <Fragment key={l.href}>
+                {i > 0 && <span className="text-[0.85rem] text-[#d0d0d0] max-[769px]:hidden">&bull;</span>}
+                <Link href={l.href} className={legalLinkClass}>
+                  {l.label}
+                </Link>
+              </Fragment>
+            ))}
           </div>
         </div>
       </div>

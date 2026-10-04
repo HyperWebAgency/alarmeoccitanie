@@ -3,6 +3,19 @@ import { ClipboardList, Fingerprint, type LucideIcon } from "lucide-react";
 // Every "devis" button leads to the quote funnel on the homepage.
 export const quoteHref = "/#devis";
 
+// Pages (and homepage sections) that exist. Links to anything else are hidden everywhere (menu, mobile menu,
+// footer) until the page is created: add its path here and its links reappear automatically.
+export const livePaths = new Set([
+  "/",
+  "/#devis",
+  "/contact",
+  "/mentions-legales",
+  "/politique-confidentialite",
+  "/conditions-generales",
+]);
+
+export const isLive = (href: string) => livePaths.has(href);
+
 // An icon is either a Lucide component or the path of one of our own SVGs (public/images/icons).
 export type NavIcon = LucideIcon | string;
 

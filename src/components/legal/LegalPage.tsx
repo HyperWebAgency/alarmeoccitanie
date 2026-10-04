@@ -4,7 +4,7 @@ import Link from "next/link";
 import { site } from "@/lib/site";
 
 // "alarmeoccitanie.fr" — the site name as written in the legal texts.
-export const siteDomain = new URL(site.url).host;
+export const siteDomain = new URL(site.url).host.replace(/^www\./, "");
 
 // One-line postal address, e.g. "1 Place Charles de Gaulle, 34170 Castelnau-le-Lez".
 export const postalAddress = `${site.address.street}, ${site.address.postalCode} ${site.address.city}`;
