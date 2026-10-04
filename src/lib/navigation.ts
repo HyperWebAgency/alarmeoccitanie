@@ -1,7 +1,7 @@
 import { ClipboardList, Fingerprint, type LucideIcon } from "lucide-react";
 
-// Every "devis" button leads to the quote funnel on the homepage.
-export const quoteHref = "/#devis";
+// Every "devis" button (Obtenir mon devis, Demander un devis gratuit…) leads to the contact page.
+export const quoteHref = "/contact";
 
 // Pages (and homepage sections) that exist. Links to anything else are hidden everywhere (menu, mobile menu,
 // footer) until the page is created: add its path here and its links reappear automatically.
