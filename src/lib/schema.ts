@@ -49,3 +49,17 @@ export function websiteSchema() {
     publisher: { "@id": businessId },
   };
 }
+
+// Breadcrumb trail for Google. The last item is the current page (no URL needed).
+export function breadcrumbSchema(items: { label: string; href?: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: item.label,
+      ...(item.href ? { item: new URL(item.href, site.url).href } : {}),
+    })),
+  };
+}

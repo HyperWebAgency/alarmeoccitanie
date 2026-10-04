@@ -4,6 +4,7 @@ import { site } from "@/lib/site";
 import { businessSchema, websiteSchema } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Navbar } from "@/components/layout/Navbar";
+import { MaintenanceBar } from "@/components/layout/MaintenanceBar";
 import { RappelezMoi } from "@/components/layout/RappelezMoi";
 import { Footer } from "@/components/layout/Footer";
 import "./globals.css";
@@ -39,9 +40,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       data-scroll-behavior="smooth"
       className={`${inter.variable} ${urbanist.variable} ${poppins.variable} ${caveat.variable} ${roboto.variable} antialiased`}
     >
-      <body className="relative font-sans">
+      {/* pt-8: room for the maintenance bar */}
+      <body className="relative pt-8 font-sans">
         <JsonLd data={businessSchema()} />
         <JsonLd data={websiteSchema()} />
+        <MaintenanceBar />
         <Navbar />
         <RappelezMoi />
         {children}

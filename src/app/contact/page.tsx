@@ -29,7 +29,7 @@ export default function ContactPage() {
         height={276}
         loading="eager"
         sizes="190px"
-        className="pointer-events-none absolute top-5 left-12 z-[1070] hidden h-[62px] w-auto lg:block"
+        className="pointer-events-none absolute top-[3.25rem] left-12 z-[1070] hidden h-[62px] w-auto lg:block"
       />
 
       <section className="flex min-h-screen w-full items-stretch bg-white pt-[100px] max-[969px]:min-h-0 max-[768px]:pt-14 max-[601px]:pt-[90px]">

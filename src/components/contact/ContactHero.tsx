@@ -2,6 +2,7 @@ import Image from "next/image";
 import { site } from "@/lib/site";
 import { GoogleIcon } from "@/components/ui/GoogleIcon";
 import { PartnerLogos } from "./PartnerLogos";
+import { Breadcrumb } from "@/components/seo/Breadcrumb";
 
 const avatars = [
   { src: "/images/avatars/avatar1.webp", alt: "Client satisfait" },
@@ -30,6 +31,8 @@ function Star() {
 export function ContactHero() {
   return (
     <div className="max-w-[600px]">
+      <Breadcrumb items={[{ label: "Accueil", href: "/" }, { label: "Contact" }]} className="mb-6" />
+
       {/* Google review badge — a smaller/slicker variant of the homepage hero's badge, for the white background. */}
       <div className="mb-8 inline-flex w-fit items-center gap-[0.7rem] rounded-[60px] border border-[#ececec] bg-[#f5f5f5] px-4 py-[0.45rem]">
         <GoogleIcon className="size-[18px] shrink-0" />
@@ -83,7 +86,7 @@ export function ContactHero() {
               stroke="currentColor"
               strokeWidth="3"
               aria-hidden="true"
-              className="shrink-0 text-gold-dark"
+              className="shrink-0 text-[#4CAF50]"
             >
               <path d="M20 6L9 17l-5-5" />
             </svg>

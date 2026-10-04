@@ -37,7 +37,7 @@ export function Navbar() {
   return (
     <>
       {/* Desktop logo: absolute, not fixed, so it scrolls away with the top of the page. */}
-      <Link href="/" className="absolute top-5 left-12 z-[1060] hidden lg:flex">
+      <Link href="/" className="absolute top-[3.25rem] left-12 z-[1060] hidden lg:flex">
         <Image
           src="/images/logo/alarme-occitanie-logo-blanc.png"
           alt={`${site.name} - Alarme et vidéosurveillance Montpellier`}
@@ -51,7 +51,7 @@ export function Navbar() {
 
       <nav
         aria-label="Navigation principale"
-        className="fixed inset-x-0 top-0 z-[1050] flex items-center justify-between bg-white/95 px-6 py-2.5 lg:justify-end lg:bg-transparent lg:px-12 lg:py-5"
+        className="fixed inset-x-0 top-8 z-[1050] flex items-center justify-between bg-white/95 px-6 py-2.5 lg:justify-end lg:bg-transparent lg:px-12 lg:py-5"
       >
         {/* Mobile logo (dark, on the white top bar). */}
         <Link href="/" className="relative z-10 flex lg:hidden">

@@ -70,7 +70,7 @@ export function MobileMenu() {
       <div
         ref={drawerRef}
         id="menu-mobile"
-        className={`fixed inset-x-0 top-0 z-0 flex max-h-[90dvh] flex-col overflow-y-auto rounded-b-2xl bg-white px-8 pt-20 pb-8 shadow-[0_10px_40px_rgba(0,0,0,0.15)] transition-[transform,visibility] duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] lg:hidden ${
+        className={`fixed inset-x-0 top-0 z-0 flex max-h-[90dvh] flex-col overflow-y-auto rounded-b-2xl bg-white px-8 pt-28 pb-8 shadow-[0_10px_40px_rgba(0,0,0,0.15)] transition-[transform,visibility] duration-[350ms] ease-[cubic-bezier(0.4,0,0.2,1)] lg:hidden ${
           open ? "visible translate-y-0" : "invisible -translate-y-full"
         }`}
       >

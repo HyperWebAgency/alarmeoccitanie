@@ -189,7 +189,7 @@ export function QuoteFunnel() {
   );
 
   return (
-    <section id="devis" aria-labelledby="devis-title" className="scroll-mt-24 bg-white px-8 py-20 [line-height:normal] max-[769px]:px-4 max-[769px]:py-12">
+    <section id="devis" aria-labelledby="devis-title" className="scroll-mt-32 bg-white px-8 py-20 [line-height:normal] max-[769px]:px-4 max-[769px]:py-12">
       <div className="mx-auto max-w-[1200px]">
         <h2
           id="devis-title"

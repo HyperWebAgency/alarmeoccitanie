@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Breadcrumb } from "@/components/seo/Breadcrumb";
 import { site } from "@/lib/site";
 
 // "alarmeoccitanie.fr" — the site name as written in the legal texts.
@@ -47,7 +48,7 @@ export function LegalPage({
         height={276}
         loading="eager"
         sizes="190px"
-        className="pointer-events-none absolute top-5 left-12 z-[1070] hidden h-[62px] w-auto lg:block"
+        className="pointer-events-none absolute top-[3.25rem] left-12 z-[1070] hidden h-[62px] w-auto lg:block"
       />
 
       <section className="border-b border-[#eee] px-[1.2rem] pt-[5.5rem] pb-6 text-center min-[769px]:px-8 min-[769px]:pt-28 min-[769px]:pb-8">
@@ -55,12 +56,7 @@ export function LegalPage({
           {eyebrow}
         </span>
         <h1 className="text-[1.8rem] leading-[1.15] font-bold text-[#1a1a1a] min-[769px]:text-[2.4rem]">{title}</h1>
-        <p className="mt-3 text-[0.9rem] text-[#999]">
-          <Link href="/" className="text-[#666] hover:text-gold-dark">
-            Accueil
-          </Link>{" "}
-          &nbsp;›&nbsp; {breadcrumb}
-        </p>
+        <Breadcrumb items={[{ label: "Accueil", href: "/" }, { label: breadcrumb }]} className="mt-3 [&_ol]:justify-center" />
       </section>
 
       <main

@@ -55,7 +55,7 @@ export function Footer() {
           />
           <p className="m-0 text-[0.95rem] leading-[1.6] text-[#666] max-[769px]:text-[0.9rem]">
             Votre expert en vidéosurveillance et sécurité à Montpellier. Plus de 1000 installations réussies depuis
-            10 ans.
+            20 ans.
           </p>
 
           <div className="flex flex-col gap-4">
