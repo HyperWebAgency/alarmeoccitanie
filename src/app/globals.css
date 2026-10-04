@@ -1,26 +1,117 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+  /* Brand — gold text on white fails contrast (2.6:1): use gold-dark there. */
+  --color-navy: #0e2238;
+  --color-gold: #c8992f;
+  --color-gold-light: #d9ae4e;
+  --color-gold-dark: #8a6a1f;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --animate-hero-fade-in-up: heroFadeInUp 1s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  --animate-hero-bounce: heroBounce 2s infinite;
+  --animate-review-note: reviewNoteAppear 0.6s ease-out 8s forwards;
+  /* zozo moves the logos 0.5px/frame (≈30px/s at 60Hz): one 1656px copy in 55.2s. */
+  --animate-trust-marquee: trustMarquee 55.2s linear infinite;
+  /* "Les marques qu'on maîtrise" — two logo columns scrolling opposite ways, 28s/loop like zozo. */
+  --animate-brands-scroll-up: brandsScrollUp 28s linear infinite;
+  --animate-brands-scroll-down: brandsScrollDown 28s linear infinite;
+  /* Reviews carousel: the active dot fills up, then the next review shows (autoplay driven by animationend). */
+  --animate-review-progress: reviewProgress 7s linear forwards;
+  /* Quote funnel: each new step fades in. */
+  --animate-funnel-step: funnelStep 0.35s ease-out;
+  /* Contact page benefits list: each item slides in from the left (staggered per-item delay inline). */
+  --animate-slide-in-left: slideInLeft 0.6s ease forwards;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  @keyframes slideInLeft {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes funnelStep {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes reviewProgress {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+
+  @keyframes heroFadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes heroBounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-10px);
+    }
+    60% {
+      transform: translateY(-5px);
+    }
+  }
+  @keyframes reviewNoteAppear {
+    from {
+      opacity: 0;
+      transform: translateY(-40%) scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(-45%) scale(1);
+    }
+  }
+  @keyframes trustMarquee {
+    to {
+      transform: translateX(calc(-100% / 3));
+    }
+  }
+  @keyframes brandsScrollUp {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-33.33%);
+    }
+  }
+  @keyframes brandsScrollDown {
+    0% {
+      transform: translateY(-33.33%);
+    }
+    100% {
+      transform: translateY(0);
+    }
   }
 }
 
+@theme inline {
+  --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-urbanist: var(--font-urbanist-family), sans-serif;
+  --font-poppins: var(--font-poppins-family), sans-serif;
+  --font-caveat: var(--font-caveat-family), cursive;
+  --font-roboto: var(--font-roboto-family), sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #fff;
+  color: var(--color-navy);
 }

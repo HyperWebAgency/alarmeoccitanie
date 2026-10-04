@@ -1,36 +1,35 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# alarmeoccitanie.fr
 
-## Getting Started
+Site d'Alarme Occitanie — Next.js 16 (App Router) · React 19 · Tailwind CSS v4 · hébergé sur Vercel.
 
-First, run the development server:
+## Commandes
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev     # http://localhost:3000
+npm run build   # build de production
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Où modifier quoi
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `src/lib/site.ts` — **source unique** des infos entreprise (NAP, horaires, note Google, zones). Doit correspondre exactement à la fiche Google Business Profile.
+- `src/lib/schema.ts` — données structurées JSON-LD.
+- `src/lib/metadata.ts` — `pageMetadata()` à utiliser pour chaque nouvelle page (title, description, canonical, OG).
+- `src/app/sitemap.ts` — ajouter chaque nouvelle page indexable.
+- `src/lib/navigation.ts` — liens du menu (Services, Nos offres) ; `quoteHref` mène au tunnel de devis (`/#devis`).
+- `src/lib/reviews.ts` — avis affichés sur l'accueil.
+- `src/lib/quote.ts` — questions du tunnel « Votre demande de devis en moins d'une minute ».
+- `photos/` — dépôt des photos brutes (non publiées), converties en WebP dans `public/images/`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Formulaires
 
-## Learn More
+Les 3 formulaires (« Rappelez-moi », tunnel de devis, page `/contact`) envoient depuis le navigateur vers Formspree
+(`site.formspree` dans `src/lib/site.ts`, envoi dans `src/lib/formspree.ts`). Aucune variable d'environnement n'est
+nécessaire. Ne pas envoyer de vrais tests en boucle : chaque envoi compte dans le quota Formspree.
 
-To learn more about Next.js, take a look at the following resources:
+Le site ne dépose aucun cookie.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Règles de marque
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Couleurs : blanc, navy `#0E2238`, or `#C8992F`. L'or en texte sur fond blanc n'est pas assez contrasté : utiliser `text-gold-dark` (`#8A6A1F`). Les boutons or ont un texte navy.
