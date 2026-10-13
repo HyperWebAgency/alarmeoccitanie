@@ -50,6 +50,20 @@ export function websiteSchema() {
   };
 }
 
+// Homepage FAQ — mirrors the Q&A shown in the accordion (src/lib/faq.ts) so the visible
+// text and the markup Google reads can never drift apart.
+export function faqSchema(items: { question: string; answer: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: { "@type": "Answer", text: item.answer },
+    })),
+  };
+}
+
 // Breadcrumb trail for Google. The last item is the current page (no URL needed).
 export function breadcrumbSchema(items: { label: string; href?: string }[]) {
   return {

@@ -5,6 +5,7 @@ import { businessSchema, websiteSchema } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Navbar } from "@/components/layout/Navbar";
 import { MaintenanceBar } from "@/components/layout/MaintenanceBar";
+import { barClosedScript } from "@/components/layout/maintenance-bar-script";
 import { RappelezMoi } from "@/components/layout/RappelezMoi";
 import { Footer } from "@/components/layout/Footer";
 import "./globals.css";
@@ -38,10 +39,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="fr"
       data-scroll-behavior="smooth"
+      // data-bar-closed may be added by the inline script before React hydrates.
+      suppressHydrationWarning
       className={`${inter.variable} ${urbanist.variable} ${poppins.variable} ${caveat.variable} ${roboto.variable} antialiased`}
     >
-      {/* pt-8: room for the maintenance bar */}
-      <body className="relative pt-8 font-sans">
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: barClosedScript }} />
+      </head>
+      {/* pt-(--bar-h): room for the maintenance bar */}
+      <body className="relative pt-(--bar-h) font-sans">
         <JsonLd data={businessSchema()} />
         <JsonLd data={websiteSchema()} />
         <MaintenanceBar />

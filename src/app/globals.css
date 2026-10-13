@@ -10,8 +10,8 @@
   --animate-hero-fade-in-up: heroFadeInUp 1s cubic-bezier(0.23, 1, 0.32, 1) forwards;
   --animate-hero-bounce: heroBounce 2s infinite;
   --animate-review-note: reviewNoteAppear 0.6s ease-out 8s forwards;
-  /* zozo moves the logos 0.5px/frame (≈30px/s at 60Hz): one 1656px copy in 55.2s. */
-  --animate-trust-marquee: trustMarquee 55.2s linear infinite;
+  /* zozo moves the logos 0.5px/frame (≈30px/s at 60Hz): one 1840px copy in 61.33s. */
+  --animate-trust-marquee: trustMarquee 61.33s linear infinite;
   /* "Les marques qu'on maîtrise" — two logo columns scrolling opposite ways, 28s/loop like zozo. */
   --animate-brands-scroll-up: brandsScrollUp 28s linear infinite;
   --animate-brands-scroll-down: brandsScrollDown 28s linear infinite;
@@ -96,6 +96,35 @@
     100% {
       transform: translateY(0);
     }
+  }
+}
+
+/* Height of the maintenance bar above the navbar (two lines on mobile); 0 once a visitor closes it. */
+:root {
+  --bar-h: 2rem;
+}
+@media (max-width: 767px) {
+  :root {
+    --bar-h: 2.75rem;
+  }
+}
+:root[data-bar-closed] {
+  --bar-h: 0px;
+}
+
+/* Row height cap for the realisations gallery (ProjectGallery.tsx, desktop layout only) — bigger screens
+   only, so rows of fewer photos can grow a little instead of leaving the row short of the container. */
+:root {
+  --gallery-max-h: 400px;
+}
+@media (min-width: 1600px) {
+  :root {
+    --gallery-max-h: 460px;
+  }
+}
+@media (min-width: 2200px) {
+  :root {
+    --gallery-max-h: 520px;
   }
 }
 

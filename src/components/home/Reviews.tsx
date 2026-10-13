@@ -55,12 +55,12 @@ export function Reviews() {
 
   return (
     <section id="avis" aria-labelledby="avis-title" className="bg-white px-8 py-20 [line-height:normal] max-[769px]:px-4 max-[769px]:py-12">
-      <div className="mx-auto grid max-w-[1200px] grid-cols-[minmax(0,4fr)_minmax(0,6fr)] items-center gap-16 text-[#1a1a1a] max-[1001px]:grid-cols-1 max-[1001px]:gap-10">
+      <div className="mx-auto grid max-w-[1200px] grid-cols-[minmax(0,4fr)_minmax(0,6fr)] items-center gap-16 text-[#1a1a1a] max-[1001px]:grid-cols-1 max-[1001px]:gap-10 min-[1600px]:max-w-[1400px] min-[1600px]:gap-20 min-[2200px]:max-w-[1600px]">
         <div className="self-start">
-          <h2 id="avis-title" className="font-poppins text-[2.5rem] leading-[1.15] font-bold tracking-[-0.5px] text-[#1a1a1a] max-md:text-[1.75rem]">
+          <h2 id="avis-title" className="font-poppins text-[2.5rem] leading-[1.15] font-bold tracking-[-0.5px] text-[#1a1a1a] max-md:text-[1.75rem] min-[1600px]:text-[2.75rem]">
             Nos clients adorent ce que nous faisons
           </h2>
-          <p className="mt-5 max-w-[440px] text-[1rem] leading-[1.7] text-[#666] max-md:text-[0.95rem]">
+          <p className="mt-5 max-w-[440px] text-[1rem] leading-[1.7] text-[#666] max-md:text-[0.95rem] min-[1600px]:max-w-[480px]">
             Particuliers et professionnels de Montpellier et de l&apos;Hérault nous confient leur alarme et leur
             vidéosurveillance. Découvrez leurs avis et rejoignez nos clients satisfaits.
           </p>
@@ -132,7 +132,7 @@ export function Reviews() {
                 aria-label={`Avis ${i + 1} sur ${count}`}
                 aria-hidden={i !== index}
                 inert={i !== index}
-                className={`flex flex-col rounded-[20px] bg-[#f6f7f9] px-12 py-12 ring-1 ring-black/[0.04] transition-opacity duration-500 [grid-area:1/1] max-md:p-6 ${
+                className={`flex flex-col rounded-[20px] bg-[#f6f7f9] px-12 py-12 ring-1 ring-black/[0.04] transition-opacity duration-500 [grid-area:1/1] max-md:p-6 min-[1600px]:px-14 min-[1600px]:py-14 ${
                   i === index ? "opacity-100" : "pointer-events-none opacity-0"
                 }`}
               >
@@ -145,7 +145,7 @@ export function Reviews() {
                     Visible sur notre Google
                   </span>
                 </div>
-                <blockquote className="mt-7 flex-1 text-[1.4rem] leading-[1.6] whitespace-pre-line text-[#1a1a1a] max-md:text-[1.05rem]">{r.text}</blockquote>
+                <blockquote className="mt-7 flex-1 text-[1.4rem] leading-[1.6] whitespace-pre-line text-[#1a1a1a] max-md:text-[1.05rem] min-[1600px]:text-[1.55rem]">{r.text}</blockquote>
                 <figcaption className="mt-12 flex items-center justify-between gap-4 max-md:mt-7 max-md:flex-col max-md:items-start max-md:gap-3">
                   <span className="flex items-center gap-3">
                     <Image

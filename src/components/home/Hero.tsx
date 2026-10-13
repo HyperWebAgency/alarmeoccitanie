@@ -64,14 +64,14 @@ export function Hero() {
 
       <div className="relative mt-24 max-w-[900px] text-white max-md:mt-0 max-md:min-h-[200px]">
         <h1
-          className={`mb-[0.8rem] font-poppins text-[2.2rem] leading-[1.1] font-bold tracking-[-1px] min-[769px]:text-[clamp(2.3rem,4.1vw,3.2rem)] min-[769px]:leading-[1.12] max-md:mt-12 max-md:text-[1.4rem] ${fadeUp}`}
+          className={`mb-[0.8rem] font-poppins text-[2.2rem] leading-[1.1] font-bold tracking-[-1px] min-[769px]:text-[clamp(2.3rem,4.1vw,3.2rem)] min-[769px]:leading-[1.12] max-md:mt-12 max-md:text-[1.4rem] min-[1900px]:text-[3.6rem] ${fadeUp}`}
         >
           Installation Vidéosurveillance
           <br className="max-md:hidden" /> et Alarme à Montpellier
         </h1>
 
         <p
-          className={`mb-6 font-urbanist text-[1.2rem] font-light max-md:mb-3 max-md:text-[0.85rem] ${fadeUp} [animation-delay:0.05s]`}
+          className={`mb-6 font-urbanist text-[1.2rem] font-light max-md:mb-3 max-md:text-[0.85rem] min-[1900px]:text-[1.3rem] ${fadeUp} [animation-delay:0.05s]`}
         >
           Votre installateur de vidéosurveillance et d&apos;alarme à Montpellier et dans l&apos;Hérault.
           <br className="max-md:hidden" /> Pose de caméras de surveillance et de systèmes d&apos;alarme pour sécuriser

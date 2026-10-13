@@ -8,6 +8,7 @@ export const quoteHref = "/contact";
 export const livePaths = new Set([
   "/",
   "/#devis",
+  "/#realisations",
   "/contact",
   "/mentions-legales",
   "/politique-confidentialite",

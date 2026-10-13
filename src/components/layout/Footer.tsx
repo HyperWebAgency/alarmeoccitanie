@@ -14,6 +14,7 @@ function serviceHref(match: string) {
 const navColumns = [
   [
     { href: "/", label: "Accueil" },
+    { href: "/#realisations", label: "Réalisations" },
     { href: serviceHref("videosurveillance"), label: "Vidéosurveillance" },
     { href: serviceHref("interphone"), label: "Interphone" },
     { href: serviceHref("alarme"), label: "Alarme" },
@@ -32,7 +33,7 @@ const legalLinks = [
   { href: "/plan-du-site", label: "Plan du site" },
 ].filter((l) => isLive(l.href));
 
-const navLinkClass = "w-fit text-[0.9rem] text-[#333] no-underline transition-all duration-300 hover:pl-2 hover:text-gold-dark";
+const navLinkClass = "w-fit text-[0.9rem] text-[#333] no-underline transition-colors duration-300 hover:text-gold-dark";
 const legalLinkClass = "text-[0.85rem] text-[#666] no-underline transition-colors duration-300 hover:text-gold-dark";
 const titleClass = "font-roboto mb-6 text-[1.1rem] font-bold text-[#333] max-[769px]:text-[1rem]";
 
@@ -42,7 +43,7 @@ export function Footer() {
 
   return (
     <footer className="border-t border-[#e0e0e0] bg-white px-8 pt-16 pb-8 [line-height:normal] max-[769px]:px-6 max-[769px]:pt-12 max-[769px]:pb-6">
-      <div className="mx-auto grid max-w-[1400px] grid-cols-[1fr_1fr_1.2fr] gap-16 max-[769px]:grid-cols-1 max-[769px]:gap-12">
+      <div className="mx-auto grid max-w-[1400px] grid-cols-[1fr_1fr_1.2fr] gap-16 max-[769px]:grid-cols-1 max-[769px]:gap-12 min-[1600px]:max-w-[1600px] min-[2200px]:max-w-[1800px]">
         {/* Left column: company info */}
         <div className="flex flex-col gap-6">
           <Image
@@ -124,27 +125,35 @@ export function Footer() {
           <h3 className={titleClass}>Notre localisation</h3>
           <div className="overflow-hidden rounded-xl shadow-[0_4px_12px_rgba(0,0,0,0.1)]">
             <iframe
-              src="https://www.google.com/maps?q=1+Place+Charles+de+Gaulle,+34170+Castelnau-le-Lez&output=embed"
+              src={site.google.mapEmbed}
               width="100%"
               height="300"
               loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
               title={`Localisation ${site.name} à Castelnau-le-Lez`}
               className="block h-[300px] w-full rounded-xl border-0 max-[769px]:h-[250px]"
             />
           </div>
-          <p className="m-0 flex items-center gap-2 text-[0.9rem] text-[#666]">
-            <svg className="size-5 shrink-0 text-gold-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          {/* Opens the Google Maps itinerary to the address. */}
+          <a
+            href={site.google.directions}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="m-0 flex w-fit items-center gap-2 text-[0.9rem] text-[#666] transition-colors hover:text-gold-dark"
+          >
+            <svg className="size-5 shrink-0 text-gold-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
               <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
               <circle cx="12" cy="10" r="3" />
             </svg>
             Castelnau-le-Lez, Montpellier
-          </p>
+          </a>
         </div>
       </div>
 
       {/* Footer bottom */}
       <div className="mt-12 border-t border-[#e0e0e0] pt-8">
-        <div className="mx-auto flex max-w-[1400px] flex-wrap items-center justify-between gap-4 max-[769px]:flex-col max-[769px]:gap-3 max-[769px]:text-center">
+        <div className="mx-auto flex max-w-[1400px] flex-wrap items-center justify-between gap-4 max-[769px]:flex-col max-[769px]:gap-3 max-[769px]:text-center min-[1600px]:max-w-[1600px] min-[2200px]:max-w-[1800px]">
           <p className="m-0 text-[0.85rem] text-[#666]">
             &copy; {year} {site.name}. Tous droits réservés.
             <span aria-hidden="true" className="mx-2 text-[#d0d0d0] max-[769px]:hidden">

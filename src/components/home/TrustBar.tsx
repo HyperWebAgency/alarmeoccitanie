@@ -15,6 +15,12 @@ const clients = [
   { src: "/images/clients/le-kiosque-a-pizza.svg", name: "Le Kiosque à Pizza", width: 101, height: 50 },
   { src: "/images/clients/foussier.webp", name: "Foussier", width: 50, height: 50 },
   { src: "/images/clients/ciblex.webp", name: "Ciblex", width: 120, height: 25 },
+  {
+    src: "/images/clients/assurance-maladie-installation-alarme-montpellier.webp",
+    name: "l'Assurance Maladie",
+    width: 113,
+    height: 50,
+  },
 ];
 
 // The track holds 3 copies of the logos and slides by one copy per loop (seamless up to ~3300px wide).
@@ -60,7 +66,7 @@ export function TrustBar() {
       >
         <div
           ref={trackRef}
-          className="flex w-max animate-trust-marquee max-[769px]:[animation-duration:23s] max-md:[animation-duration:19s] motion-reduce:animate-none"
+          className="flex w-max animate-trust-marquee max-[769px]:[animation-duration:25.56s] max-md:[animation-duration:21.11s] motion-reduce:animate-none"
         >
           {copies.map((copy) => (
             <ul

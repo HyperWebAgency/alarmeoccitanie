@@ -22,7 +22,7 @@ export default function MentionsLegales() {
       <h2>Édition du site</h2>
       <p>Le présent site, accessible à l&apos;URL {siteDomain}, est édité par :</p>
       <p>
-        <strong>{site.name}</strong>, entreprise individuelle,
+        <strong>{site.name}</strong>,
         <br />
         dont le siège social est situé au {postalAddress}, France,
         <br />

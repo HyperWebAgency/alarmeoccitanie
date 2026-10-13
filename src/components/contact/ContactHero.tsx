@@ -30,7 +30,7 @@ function Star() {
 // Left column of the contact split layout: Google review badge, headline, benefits, trust logos.
 export function ContactHero() {
   return (
-    <div className="max-w-[600px]">
+    <div className="max-w-[600px] min-[1600px]:max-w-[720px] min-[2200px]:max-w-[820px]">
       <Breadcrumb items={[{ label: "Accueil", href: "/" }, { label: "Contact" }]} className="mb-6" />
 
       {/* Google review badge — a smaller/slicker variant of the homepage hero's badge, for the white background. */}
@@ -62,11 +62,11 @@ export function ContactHero() {
         </div>
       </div>
 
-      <h1 className="mb-8 text-[3.5rem] leading-[1.1] font-extrabold tracking-[-1px] text-[#1a1a1a] max-[1201px]:text-[3rem] max-[601px]:text-[2.5rem]">
+      <h1 className="mb-8 text-[3.5rem] leading-[1.1] font-extrabold tracking-[-1px] text-[#1a1a1a] max-[1201px]:text-[3rem] max-[601px]:text-[2.5rem] min-[1600px]:text-[4rem] min-[2200px]:text-[4.5rem]">
         Prêt à <span className="text-gold-dark">Sécuriser</span> Votre Propriété?
       </h1>
 
-      <p className="mb-12 text-[1.25rem] leading-[1.6] text-[#555] max-[969px]:hidden max-[601px]:text-[1.1rem]">
+      <p className="mb-12 text-[1.25rem] leading-[1.6] text-[#555] max-[969px]:hidden max-[601px]:text-[1.1rem] min-[1600px]:text-[1.4rem]">
         Votre sécurité mérite une attention professionnelle. Découvrons ensemble vos besoins pour vous proposer la
         solution parfaite.
       </p>
@@ -76,7 +76,7 @@ export function ContactHero() {
           <li
             key={text}
             style={{ animationDelay: `${(i + 1) * 0.1}s` }}
-            className="flex items-center gap-4 text-[1.1rem] text-[#1a1a1a] opacity-0 [transform:translateX(-20px)] animate-slide-in-left max-[601px]:text-[1rem] motion-reduce:animate-none motion-reduce:[transform:none] motion-reduce:opacity-100"
+            className="flex items-center gap-4 text-[1.1rem] text-[#1a1a1a] opacity-0 [transform:translateX(-20px)] animate-slide-in-left max-[601px]:text-[1rem] min-[1600px]:text-[1.2rem] motion-reduce:animate-none motion-reduce:[transform:none] motion-reduce:opacity-100"
           >
             <svg
               width="24"

@@ -30,12 +30,12 @@ const items = [
 export function ClientNeeds() {
   return (
     <section id="qui-sommes-nous" className="bg-white px-8 py-20 [line-height:normal] max-[769px]:px-5 max-[769px]:py-12">
-      <div className="mx-auto grid max-w-[1200px] grid-cols-2 items-center gap-16 max-[901px]:grid-cols-1 max-[901px]:gap-10">
+      <div className="mx-auto grid max-w-[1200px] grid-cols-2 items-center gap-16 max-[901px]:grid-cols-1 max-[901px]:gap-10 min-[1600px]:max-w-[1400px] min-[1600px]:gap-20 min-[2200px]:max-w-[1600px]">
         <div>
           <span className="mb-3 inline-block text-[0.75rem] font-bold tracking-[2px] text-gold-dark uppercase">
             Ils nous ont fait confiance
           </span>
-          <h2 className="mb-5 font-poppins text-[2.2rem] leading-[1.2] font-bold tracking-[-0.5px] text-[#1a1a1a] max-[769px]:text-[1.6rem]">
+          <h2 className="mb-5 font-poppins text-[2.2rem] leading-[1.2] font-bold tracking-[-0.5px] text-[#1a1a1a] max-[769px]:text-[1.6rem] min-[1600px]:text-[2.5rem]">
             Ce que recherchaient nos clients pour leur caméra de surveillance et leur alarme à Montpellier
           </h2>
 
@@ -71,7 +71,7 @@ export function ClientNeeds() {
 
         <div className="flex items-center justify-center">
           {/* Relative wrapper sized like the photo itself, so the badge below anchors to its edges, not the column */}
-          <div className="relative w-full max-w-[360px]">
+          <div className="relative w-full max-w-[360px] min-[1600px]:max-w-[400px] min-[2200px]:max-w-[440px]">
             <Image
               src="/images/interventions/installateur-alarme-videosurveillance.webp"
               alt={`Technicien ${site.name} en intervention d'installation d'alarme et de vidéosurveillance à Montpellier`}

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { StatCounter } from "./StatCounter";
 
 type Logo = { src: string; alt: string; width: number; height: number };
 
@@ -22,6 +23,13 @@ const columnDown: Logo[] = [
   { src: "/images/brands/izyx.webp", alt: "Izyx contrôle accès Montpellier", width: 221, height: 80 },
   { src: "/images/brands/intratone.webp", alt: "Intratone interphonie Montpellier", width: 320, height: 56 },
   { src: "/images/brands/eden-innovations.webp", alt: "Eden Innovations sécurité Montpellier", width: 169, height: 80 },
+];
+
+// Key figures under the copy; each number counts up from 0 when it scrolls into view.
+const stats = [
+  { value: 1000, prefix: "+", suffix: "", label: "Installations réalisées" },
+  { value: 20, prefix: "", suffix: " ans", label: "D'expertise" },
+  { value: 100, prefix: "", suffix: "%", label: "Local" },
 ];
 
 // 3 copies per column so the loop can scroll exactly one copy (33.33%) and repeat seamlessly.
@@ -63,14 +71,15 @@ function LogoColumn({ logos, direction }: { logos: Logo[]; direction: "up" | "do
 export function Brands() {
   return (
     <section className="bg-white px-16 py-20 [line-height:normal] max-[1001px]:px-6 max-[1001px]:py-12">
-      <div className="mx-auto flex max-w-[1200px] items-center gap-16 max-[1001px]:flex-wrap max-[1001px]:justify-center max-[1001px]:gap-x-4 max-[1001px]:gap-y-8 max-[1001px]:text-center">
+      <div className="mx-auto flex max-w-[1200px] items-center gap-16 max-[1001px]:flex-wrap max-[1001px]:justify-center max-[1001px]:gap-x-4 max-[1001px]:gap-y-8 max-[1001px]:text-center min-[1600px]:max-w-[1400px] min-[1600px]:gap-20 min-[2200px]:max-w-[1600px]">
         <LogoColumn logos={columnUp} direction="up" />
 
-        <div className="min-w-[280px] flex-1 text-center max-[1001px]:order-[-1] max-[1001px]:min-w-0 max-[1001px]:flex-[1_1_100%]">
+        {/* Desktop: the copy sits in the upper part of the column instead of its vertical middle. */}
+        <div className="min-w-[280px] flex-1 self-start pt-6 text-center max-[1001px]:order-[-1] max-[1001px]:self-auto max-[1001px]:pt-0 max-[1001px]:min-w-0 max-[1001px]:flex-[1_1_100%]">
           <span className="mb-3 block text-[0.75rem] font-bold tracking-[2px] text-gold-dark uppercase">
             NOS PARTENAIRES
           </span>
-          <h2 className="mb-6 font-poppins text-[2.2rem] leading-[1.2] font-bold tracking-[-0.5px] text-[#1a1a1a] max-[1001px]:text-[1.5rem]">
+          <h2 className="mb-6 font-poppins text-[2.2rem] leading-[1.2] font-bold tracking-[-0.5px] text-[#1a1a1a] max-[1001px]:text-[1.5rem] min-[1600px]:text-[2.5rem]">
             Les marques qu&apos;on <span className="font-bold text-gold-dark">maîtrise</span>
           </h2>
           <p className="text-[0.95rem] leading-[1.7] text-[#666]">
@@ -78,6 +87,17 @@ export function Brands() {
             Hikvision et Dahua aux systèmes d&apos;alarme Ajax, chaque marque est sélectionnée pour sa fiabilité et
             ses performances.
           </p>
+
+          <dl className="mt-10 grid grid-cols-3 divide-x divide-[#e5e7eb] max-[1001px]:mt-8">
+            {stats.map((s) => (
+              <div key={s.label} className="flex flex-col-reverse justify-end gap-1.5 px-2">
+                <dt className="text-[0.8rem] leading-[1.3] text-[#666] max-[1001px]:text-[0.75rem]">{s.label}</dt>
+                <dd className="font-poppins text-[2rem] leading-none font-bold text-navy max-[1001px]:text-[1.6rem]">
+                  <StatCounter value={s.value} prefix={s.prefix} suffix={s.suffix} />
+                </dd>
+              </div>
+            ))}
+          </dl>
         </div>
 
         <LogoColumn logos={columnDown} direction="down" />

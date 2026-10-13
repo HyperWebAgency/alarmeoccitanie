@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
-import Image from "next/image";
 import Link from "next/link";
+import { DarkLogoOverlay } from "@/components/layout/DarkLogoOverlay";
 import { Breadcrumb } from "@/components/seo/Breadcrumb";
 import { site } from "@/lib/site";
 
@@ -38,18 +38,7 @@ export function LegalPage({
 }) {
   return (
     <div className="leading-[1.65] text-[#333]">
-      {/* The navbar's desktop logo is white (made for the dark hero) and would vanish on this white band.
-          A dark copy is laid exactly over it; purely visual, clicks still go to the navbar. */}
-      <Image
-        src="/images/logo/alarme-occitanie-logo.png"
-        alt=""
-        aria-hidden="true"
-        width={800}
-        height={276}
-        loading="eager"
-        sizes="190px"
-        className="pointer-events-none absolute top-[3.25rem] left-12 z-[1070] hidden h-[62px] w-auto lg:block"
-      />
+      <DarkLogoOverlay />
 
       <section className="border-b border-[#eee] px-[1.2rem] pt-[5.5rem] pb-6 text-center min-[769px]:px-8 min-[769px]:pt-28 min-[769px]:pb-8">
         <span className="mb-[0.6rem] inline-block text-[0.75rem] font-semibold tracking-[3px] text-gold-dark uppercase">
