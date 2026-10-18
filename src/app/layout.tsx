@@ -46,6 +46,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: barClosedScript }} />
+        <GoogleAnalytics />
       </head>
       {/* pt-(--bar-h): room for the maintenance bar */}
       <body className="relative pt-(--bar-h) font-sans">
@@ -56,7 +57,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <RappelezMoi />
         {children}
         <Footer />
-        <GoogleAnalytics />
       </body>
     </html>
   );
