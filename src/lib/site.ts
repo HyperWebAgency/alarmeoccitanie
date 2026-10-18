@@ -16,6 +16,8 @@ export const site = {
   email: "alarmeoccitanie@gmail.com",
   // Formspree endpoint used by every form on the site (see src/lib/formspree.ts).
   formspree: "https://formspree.io/f/xoejarog",
+  // Google Analytics 4 measurement ID (loaded in src/components/seo/GoogleAnalytics.tsx).
+  gaId: "G-NK4ZNQQEY9",
 
   address: {
     street: "1 Place Charles de Gaulle",

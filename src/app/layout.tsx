@@ -3,6 +3,7 @@ import { Caveat, Inter, Poppins, Roboto, Urbanist } from "next/font/google";
 import { site } from "@/lib/site";
 import { businessSchema, websiteSchema } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { GoogleAnalytics } from "@/components/seo/GoogleAnalytics";
 import { Navbar } from "@/components/layout/Navbar";
 import { MaintenanceBar } from "@/components/layout/MaintenanceBar";
 import { barClosedScript } from "@/components/layout/maintenance-bar-script";
@@ -55,6 +56,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <RappelezMoi />
         {children}
         <Footer />
+        <GoogleAnalytics />
       </body>
     </html>
   );

@@ -12,7 +12,7 @@ export const metadata = pageMetadata({
 export default function PolitiqueConfidentialite() {
   return (
     <LegalPage eyebrow="Confidentialité" title="Politique de Confidentialité" breadcrumb="Politique de confidentialité">
-      <p>Date de dernière mise à jour : 4 octobre 2026</p>
+      <p>Date de dernière mise à jour : 18 octobre 2026</p>
 
       <p>
         La présente Politique de Confidentialité décrit la manière dont {site.name} (SIRET {site.legal.siret}) collecte,
@@ -86,9 +86,24 @@ export default function PolitiqueConfidentialite() {
 
       <h2>7. Cookies</h2>
       <p>
-        Notre site n&apos;utilise pas de cookies : aucun cookie de mesure d&apos;audience, publicitaire ou de traçage
-        n&apos;est déposé sur votre appareil lors de votre visite.
+        Notre site utilise des cookies de mesure d&apos;audience déposés par Google Analytics (service fourni par Google
+        Ireland Limited). Ils nous permettent de connaître la fréquentation du site : nombre de visiteurs, pages
+        consultées, durée des visites, provenance des visiteurs et type d&apos;appareil utilisé. Ces statistiques nous
+        servent uniquement à améliorer le site. Aucun cookie publicitaire n&apos;est déposé.
       </p>
+      <p>
+        Les cookies Google Analytics (dont le cookie « _ga ») sont conservés au maximum 2 ans sur votre appareil. Les
+        données collectées sont traitées par Google et peuvent être transférées vers les États-Unis, dans le cadre du
+        Data Privacy Framework UE-États-Unis.
+      </p>
+      <p>Vous pouvez à tout moment refuser ou supprimer ces cookies :</p>
+      <ul>
+        <li>depuis les paramètres de votre navigateur, en bloquant ou en supprimant les cookies ;</li>
+        <li>
+          en installant le module de désactivation de Google Analytics, disponible à l&apos;adresse
+          https://tools.google.com/dlpage/gaoptout.
+        </li>
+      </ul>
 
       <h2>8. Vos droits</h2>
       <p>Conformément au RGPD, vous disposez des droits suivants concernant vos données personnelles :</p>
