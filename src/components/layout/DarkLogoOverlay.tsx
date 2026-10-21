@@ -13,7 +13,7 @@ export function DarkLogoOverlay() {
       height={276}
       loading="eager"
       sizes="190px"
-      className="pointer-events-none absolute top-[calc(var(--bar-h)+1.25rem)] left-12 z-[1070] hidden h-[62px] w-auto lg:block"
+      className="pointer-events-none absolute top-5 left-12 z-[1070] hidden h-[62px] w-auto lg:block"
     />
   );
 }

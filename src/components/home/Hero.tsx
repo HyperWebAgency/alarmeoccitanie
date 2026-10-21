@@ -140,21 +140,6 @@ export function Hero() {
               </div>
             </div>
           </div>
-
-          {/* Handwritten note (desktop only, appears after 8s) */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute top-1/2 left-[calc(100%+0.5rem)] flex w-[290px] [transform:translateY(-45%)] items-center gap-1.5 opacity-0 animate-review-note max-[901px]:hidden motion-reduce:animate-none motion-reduce:opacity-100"
-          >
-            <svg viewBox="0 0 512 512" className="h-auto w-[74px] shrink-0 -translate-y-1.5 text-gold">
-              <g transform="translate(0,512) scale(0.1,-0.1)" fill="currentColor" stroke="none">
-                <path d="M4391 3663 c-20 -44 -132 -211 -190 -283 -77 -97 -243 -261 -356 -354 -588 -483 -1532 -880 -2300 -970 -66 -7 -121 -13 -123 -11 -1 1 21 18 50 36 70 45 212 163 271 227 54 59 57 76 31 207 l-15 80 -127 -126 c-175 -173 -356 -290 -601 -389 l-84 -34 -100 13 c-110 14 -117 11 -117 -40 0 -15 -7 -32 -15 -39 -10 -8 -15 -31 -15 -71 0 -56 1 -59 28 -65 458 -110 776 -246 1001 -429 l79 -64 7 105 c7 104 7 105 -21 145 -35 51 -114 122 -172 156 l-45 27 137 27 c416 84 843 248 1329 510 672 363 1103 744 1336 1181 47 87 51 99 45 141 -8 54 -16 58 -33 20z" />
-              </g>
-            </svg>
-            <span className="-translate-y-2 -rotate-3 font-caveat text-[1.6rem] leading-[1.02] font-bold text-white [text-shadow:0_2px_8px_rgba(0,0,0,0.55)]">
-              Eh oui, que du 5 étoiles…&nbsp;on assure, tout simplement&nbsp;!
-            </span>
-          </div>
         </div>
 
         <div className="flex min-h-[60px] flex-col gap-3 max-md:mt-2 max-md:items-start">

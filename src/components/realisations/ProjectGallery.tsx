@@ -18,8 +18,8 @@ const control =
 // Photos are never cropped: each keeps its own shape. They are laid out in rows where every photo has the
 // same height (width ∝ its aspect ratio), and a row never gets taller than MAX_H.
 // Desktop: one row up to 4 photos, then rows of 3 (5 → 3 + 2, 6 → 3 + 3). Mobile: pairs.
-// Desktop reads the --gallery-max-h custom property (globals.css raises it on big screens only,
-// same pattern as --bar-h) so a row can grow past 400px there without touching mobile.
+// Desktop reads the --gallery-max-h custom property (globals.css raises it on big screens only)
+// so a row can grow past 400px there without touching mobile.
 const MAX_H = { desktop: "var(--gallery-max-h, 400px)", mobile: "320px" };
 
 function chunk<T>(items: T[], sizes: number[]) {

@@ -1,12 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Caveat, Inter, Poppins, Roboto, Urbanist } from "next/font/google";
+import { Inter, Poppins, Roboto, Urbanist } from "next/font/google";
 import { site } from "@/lib/site";
 import { businessSchema, websiteSchema } from "@/lib/schema";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { GoogleAnalytics } from "@/components/seo/GoogleAnalytics";
 import { Navbar } from "@/components/layout/Navbar";
-import { MaintenanceBar } from "@/components/layout/MaintenanceBar";
-import { barClosedScript } from "@/components/layout/maintenance-bar-script";
 import { RappelezMoi } from "@/components/layout/RappelezMoi";
 import { Footer } from "@/components/layout/Footer";
 import "./globals.css";
@@ -19,7 +17,6 @@ const urbanist = Urbanist({
   display: "swap",
 });
 const poppins = Poppins({ variable: "--font-poppins-family", subsets: ["latin"], weight: "700", display: "swap" });
-const caveat = Caveat({ variable: "--font-caveat-family", subsets: ["latin"], weight: "700", display: "swap" });
 // Footer titles only ("Horaires d'ouverture", "Navigation", "Notre localisation") — weight 700 only.
 const roboto = Roboto({ variable: "--font-roboto-family", subsets: ["latin"], weight: "700", display: "swap" });
 
@@ -41,19 +38,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="fr"
       data-scroll-behavior="smooth"
-      // data-bar-closed may be added by the inline script before React hydrates.
-      suppressHydrationWarning
-      className={`${inter.variable} ${urbanist.variable} ${poppins.variable} ${caveat.variable} ${roboto.variable} antialiased`}
+      className={`${inter.variable} ${urbanist.variable} ${poppins.variable} ${roboto.variable} antialiased`}
     >
       <head>
-        <script dangerouslySetInnerHTML={{ __html: barClosedScript }} />
         <GoogleAnalytics />
       </head>
-      {/* pt-(--bar-h): room for the maintenance bar */}
-      <body className="relative pt-(--bar-h) font-sans">
+      <body className="relative font-sans">
         <JsonLd data={businessSchema()} />
         <JsonLd data={websiteSchema()} />
-        <MaintenanceBar />
         <Navbar />
         <RappelezMoi />
         {children}
