@@ -29,6 +29,7 @@ export const metadata: Metadata = {
   description: site.tagline,
   applicationName: site.name,
   formatDetection: { telephone: false },
+  verification: { other: { "msvalidate.01": site.bingVerification } },
 };
 
 export const viewport: Viewport = {

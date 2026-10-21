@@ -21,6 +21,8 @@ export const site = {
   googleAdsId: "AW-18456366613", // Google Ads
   // Google Ads "Contact" conversion, sent when a form is really sent (see src/lib/formspree.ts).
   googleAdsLeadEvent: "ads_conversion_Contact_Us_1",
+  // Bing Webmaster Tools ownership code (same as public/BingSiteAuth.xml), output as the msvalidate.01 meta tag.
+  bingVerification: "D8B8E351453FE5423D10FC62F1D318E0",
 
   address: {
     street: "1 Place Charles de Gaulle",
