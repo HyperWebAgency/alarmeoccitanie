@@ -78,7 +78,7 @@ export function TrustBar() {
                 <li key={c.src} className="flex h-[60px] min-w-[120px] shrink-0 items-center justify-center">
                   <Image
                     src={c.src}
-                    alt={copy === 0 ? `Logo ${c.name}, client ${site.name}` : ""}
+                    alt={`Logo ${c.name}, client ${site.name}`}
                     width={c.width}
                     height={c.height}
                     style={{ width: c.width, height: c.height }}

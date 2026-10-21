@@ -45,7 +45,7 @@ const brands = {
 const allRealisations: Realisation[] = [
   {
     slug: "installation-cameras-hikvision-alarme-ajax-prades-le-lez",
-    title: "Installation de 2 caméras Hikvision et remplacement d'une alarme Somfy par Ajax à Prades-le-Lez",
+    title: "2 caméras Hikvision et alarme Ajax pour une maison à Prades-le-Lez",
     tags: ["Vidéosurveillance", "Alarme"],
     year: "2026",
     city: "Prades-le-Lez",
@@ -112,7 +112,7 @@ const allRealisations: Realisation[] = [
   },
   {
     slug: "installation-videosurveillance-residence-montpellier",
-    title: "Installation de 4 caméras de surveillance, dont 2 à double objectif, pour une résidence à Montpellier",
+    title: "4 caméras dont 2 à double objectif pour une résidence à Montpellier",
     tags: ["Vidéosurveillance"],
     year: "2026",
     city: "Montpellier",
@@ -190,7 +190,7 @@ const allRealisations: Realisation[] = [
   },
   {
     slug: "installation-8-cameras-surveillance-villa-anduze",
-    title: "Installation de 8 caméras de surveillance avec détection humaine pour une villa à Anduze",
+    title: "8 caméras de surveillance à détection humaine pour une villa à Anduze",
     tags: ["Vidéosurveillance"],
     year: "2026",
     city: "Anduze",

@@ -51,7 +51,7 @@ function LogoColumn({ logos, direction }: { logos: Logo[]; direction: "up" | "do
             >
               <Image
                 src={logo.src}
-                alt={set === 0 ? logo.alt : ""}
+                alt={logo.alt}
                 aria-hidden={set > 0 || undefined}
                 width={logo.width}
                 height={logo.height}

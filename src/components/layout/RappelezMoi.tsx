@@ -138,9 +138,9 @@ export function RappelezMoi() {
                 <circle cx="12" cy="12" r="10" />
                 <path d="M9 12l2 2 4-4" />
               </svg>
-              <h3 id="rappel-title" className="mb-[0.6rem] text-[1.3rem] font-bold text-[#1a1a1a]">
+              <p id="rappel-title" className="mb-[0.6rem] text-[1.3rem] font-bold text-[#1a1a1a]">
                 Merci, c&apos;est noté !
-              </h3>
+              </p>
               <p className="text-[0.92rem] leading-[1.5] text-[#666]">
                 Un expert {site.name} vous rappellera dans les <strong>15 minutes</strong>.
               </p>
@@ -155,12 +155,14 @@ export function RappelezMoi() {
                 sizes="140px"
                 className="mx-auto mb-[1.2rem] block h-12 w-auto max-md:mb-[0.7rem] max-md:h-[34px]"
               />
-              <h2
+              {/* Not a heading: this popup sits in every page's HTML before the page's <h1>.
+                  Screen readers still announce it as the dialog's title (aria-labelledby). */}
+              <p
                 id="rappel-title"
                 className="mb-2 text-center text-[1.5rem] font-bold text-gold-dark max-md:mb-[0.3rem] max-md:text-[1.2rem]"
               >
                 Un expert vous rappelle
-              </h2>
+              </p>
               <p className="mb-[1.8rem] text-center text-[0.9rem] leading-[1.5] text-[#666] max-md:mb-[0.8rem] max-md:text-[0.82rem]">
                 Saisissez vos coordonnées pour être recontacté dans les{" "}
                 <strong className="text-[#1a1a1a]">15 minutes</strong>.
