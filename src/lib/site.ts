@@ -19,6 +19,8 @@ export const site = {
   // Google tag IDs, both loaded in src/components/seo/GoogleAnalytics.tsx.
   gaId: "G-NK4ZNQQEY9", // Google Analytics 4
   googleAdsId: "AW-18456366613", // Google Ads
+  // Google Ads "Contact" conversion, sent when a form is really sent (see src/lib/formspree.ts).
+  googleAdsLeadEvent: "ads_conversion_Contact_Us_1",
 
   address: {
     street: "1 Place Charles de Gaulle",
