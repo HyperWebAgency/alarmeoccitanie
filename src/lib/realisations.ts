@@ -44,6 +44,166 @@ const brands = {
 
 const allRealisations: Realisation[] = [
   {
+    slug: "installation-cameras-dahua-alarme-ajax-villa-montbazin",
+    title: "Caméras Dahua 4 MP et alarme Ajax pour une villa à Montbazin",
+    tags: ["Vidéosurveillance", "Alarme"],
+    year: "2026",
+    city: "Montbazin",
+    location: "Montbazin (34 - Hérault)",
+    image: {
+      src: "/images/realisations/installation-cameras-dahua-alarme-ajax-villa-montbazin/camera-dahua-4mp-mur-pierre-villa-montbazin.webp",
+      alt: "Caméra de surveillance Dahua 4 MP fixée sur un mur en pierre d'une villa à Montbazin (Hérault)",
+      width: 960,
+      height: 1280,
+    },
+    page: {
+      metaTitle: "Installation vidéosurveillance et alarme à Montbazin | Alarme Occitanie",
+      metaDescription:
+        "Réalisation à Montbazin (34) : caméras Dahua 2 MP remplacées par des modèles 4 MP avec IVS, et alarme Risco remplacée par Ajax dans une villa de 400 m².",
+      client: "Particulier",
+      intro:
+        "Modernisation du système de sécurité d'une villa de 400 m² à Montbazin : les anciennes caméras Dahua de 1ère génération en 2 MP ont laissé place à des caméras Dahua de 3ème génération en 4 MP, avec les fonctions intelligentes IVS, et l'ancienne alarme Risco a été remplacée par un système Ajax.",
+      besoin:
+        "Le client était déjà équipé d'un système de vidéosurveillance et d'une alarme, mais ces équipements étaient vieillissants. Il souhaitait les remplacer par des solutions plus récentes : une image plus précise pour ses caméras et une alarme plus moderne et simple à utiliser au quotidien.",
+      intervention: [
+        "Remplacement des anciennes caméras Dahua de 1ère génération en 2 MP par des caméras Dahua de 3ème génération en 4 MP.",
+        "Intégration des fonctions intelligentes IVS : franchissement de ligne et détection d'intrusion, pour une surveillance plus précise et efficace.",
+        "Remplacement de l'ancienne alarme Risco par un système d'alarme Ajax, plus moderne et simple à utiliser au quotidien.",
+        "Mise en service et prise en main de l'installation avec le client.",
+      ],
+      faq: [
+        {
+          question: "Peut-on moderniser un système de vidéosurveillance déjà installé ?",
+          answer:
+            "Oui. Dans cette villa de 400 m² à Montbazin, nous avons remplacé les anciennes caméras Dahua de 1ère génération en 2 MP par des caméras Dahua de 3ème génération en 4 MP, pour une image plus détaillée.",
+        },
+        {
+          question: "Quelle est la différence entre une caméra 2 MP et une caméra 4 MP ?",
+          answer:
+            "Le nombre de mégapixels (MP) indique la définition de l'image. Une caméra 2 MP filme en 1920 × 1080 pixels (Full HD), une caméra 4 MP en 2560 × 1440 pixels, soit près de deux fois plus de détails. Sur un enregistrement, on peut donc zoomer davantage sans que l'image devienne floue, et mieux distinguer un visage ou une silhouette à distance. C'est ce gain de précision que nous avons apporté à cette villa de Montbazin en passant de caméras 2 MP à des caméras 4 MP.",
+        },
+        {
+          question: "Que sont les fonctions IVS d'une caméra Dahua ?",
+          answer:
+            "IVS désigne les fonctions d'analyse vidéo intelligente des caméras Dahua. Ici, nous avons intégré le franchissement de ligne, qui alerte lorsqu'une personne franchit une ligne virtuelle, et la détection d'intrusion, qui alerte lorsqu'une personne entre dans une zone définie.",
+        },
+        {
+          question: "Peut-on remplacer une alarme Risco par une alarme Ajax ?",
+          answer:
+            "Oui. À Montbazin, nous avons remplacé l'ancien système d'alarme Risco du client par une solution Ajax, plus moderne et simple à utiliser au quotidien.",
+        },
+      ],
+      brands: [brands.dahua, brands.ajax],
+      photos: [
+        {
+          src: "/images/realisations/installation-cameras-dahua-alarme-ajax-villa-montbazin/sirene-exterieure-ajax-mur-pierre-villa-montbazin.webp",
+          alt: "Sirène extérieure Ajax blanche fixée sur un mur en pierre d'une villa à Montbazin",
+          width: 960,
+          height: 1280,
+        },
+        {
+          src: "/images/realisations/installation-cameras-dahua-alarme-ajax-villa-montbazin/detecteur-exterieur-ajax-villa-montbazin.webp",
+          alt: "Détecteur de mouvement extérieur Ajax posé dans l'angle d'un mur crépi d'une villa à Montbazin",
+          width: 960,
+          height: 1280,
+        },
+        {
+          src: "/images/realisations/installation-cameras-dahua-alarme-ajax-villa-montbazin/clavier-tactile-ajax-villa-montbazin.webp",
+          alt: "Clavier tactile de l'alarme Ajax qui remplace l'ancienne alarme Risco d'une villa à Montbazin",
+          width: 960,
+          height: 1280,
+        },
+        {
+          src: "/images/realisations/installation-cameras-dahua-alarme-ajax-villa-montbazin/detecteur-ouverture-ajax-fenetre-villa-montbazin.webp",
+          alt: "Détecteur d'ouverture Ajax blanc posé sur le cadre d'une fenêtre d'une villa à Montbazin",
+          width: 960,
+          height: 1280,
+        },
+        {
+          src: "/images/realisations/installation-cameras-dahua-alarme-ajax-villa-montbazin/sirene-ajax-noire-poutre-villa-montbazin.webp",
+          alt: "Sirène Ajax noire fixée sur une poutre en bois, dans une villa à Montbazin",
+          width: 960,
+          height: 1280,
+        },
+      ],
+    },
+  },
+  {
+    slug: "installation-alarme-videosurveillance-maison-corconne",
+    title: "Alarme Ajax et caméras Dahua pour une maison à Corconne",
+    tags: ["Vidéosurveillance", "Alarme"],
+    year: "2026",
+    city: "Corconne",
+    location: "Corconne (30 - Gard)",
+    image: {
+      src: "/images/realisations/installation-alarme-videosurveillance-maison-corconne/technicien-installation-alarme-camera-corconne.webp",
+      alt: "Technicien Alarme Occitanie en pleine installation sous la gouttière d'une maison à Corconne (Gard)",
+      width: 960,
+      height: 1280,
+    },
+    page: {
+      metaTitle: "Installation alarme et vidéosurveillance à Corconne | Alarme Occitanie",
+      metaDescription:
+        "Réalisation à Corconne (30) : alarme Ajax et caméras Dahua posées dès l'achat d'une maison, après une intrusion, pour protéger l'intérieur et l'extérieur.",
+      client: "Particulier",
+      intro:
+        "Installation d'une alarme Ajax et de caméras de surveillance Dahua dans une maison à Corconne, sécurisée dès son achat. L'alarme et les caméras couvrent l'ensemble de la maison, à l'intérieur comme à l'extérieur.",
+      besoin:
+        "Pendant l'achat de leur maison, les nouveaux propriétaires ont subi une intrusion. Ils souhaitaient donc la sécuriser dès l'achat finalisé, avec une protection complète de l'intérieur et de l'extérieur.",
+      intervention: [
+        "Installation réalisée dès l'achat de la maison.",
+        "Pose de caméras de surveillance Dahua sur les façades de la maison.",
+        "Installation d'une alarme Ajax : détecteurs de mouvement, détecteurs d'ouverture sur les portes et fenêtres, clavier et sirène extérieure.",
+        "Couverture complète de la maison, à l'intérieur comme à l'extérieur.",
+        "Mise en service et prise en main de l'installation avec les propriétaires.",
+      ],
+      faq: [
+        {
+          question: "Peut-on faire installer une alarme dès l'achat d'une maison ?",
+          answer:
+            "Oui. À Corconne, les propriétaires avaient subi une intrusion pendant l'achat de leur maison : nous avons installé leur alarme Ajax et leurs caméras de surveillance Dahua dès l'achat, pour qu'elle soit protégée sans attendre.",
+        },
+        {
+          question: "Une alarme et des caméras peuvent-elles protéger l'intérieur et l'extérieur d'une maison ?",
+          answer:
+            "Oui. Dans cette maison, les caméras Dahua surveillent les extérieurs, et l'alarme Ajax protège les accès et les pièces avec des détecteurs d'ouverture et de mouvement, un clavier et une sirène extérieure.",
+        },
+        {
+          question: "À quoi sert un détecteur d'ouverture ?",
+          answer:
+            "Posé sur une porte ou une fenêtre, il déclenche l'alarme dès qu'elle est ouverte pendant que le système est activé. À Corconne, nous en avons notamment installé sur les portes-fenêtres de la maison.",
+        },
+      ],
+      brands: [brands.dahua, brands.ajax],
+      photos: [
+        {
+          src: "/images/realisations/installation-alarme-videosurveillance-maison-corconne/camera-dahua-sous-gouttiere-maison-corconne.webp",
+          alt: "Caméra de surveillance Dahua fixée sous la gouttière d'une maison à Corconne (Gard)",
+          width: 960,
+          height: 1280,
+        },
+        {
+          src: "/images/realisations/installation-alarme-videosurveillance-maison-corconne/sirene-exterieure-ajax-maison-corconne.webp",
+          alt: "Sirène extérieure Ajax blanche fixée sur la façade d'une maison à Corconne, sous le toit",
+          width: 960,
+          height: 1280,
+        },
+        {
+          src: "/images/realisations/installation-alarme-videosurveillance-maison-corconne/camera-dahua-facade-crepie-maison-corconne.webp",
+          alt: "Caméra de surveillance Dahua blanche fixée sur la façade crépie d'une maison à Corconne",
+          width: 960,
+          height: 1280,
+        },
+        {
+          src: "/images/realisations/installation-alarme-videosurveillance-maison-corconne/detecteur-mouvement-alarme-maison-corconne.webp",
+          alt: "Détecteur de mouvement de l'alarme fixé dans l'angle d'un mur d'une maison à Corconne",
+          width: 960,
+          height: 1280,
+        },
+      ],
+    },
+  },
+  {
     slug: "installation-cameras-hikvision-alarme-ajax-prades-le-lez",
     title: "2 caméras Hikvision et alarme Ajax pour une maison à Prades-le-Lez",
     tags: ["Vidéosurveillance", "Alarme"],

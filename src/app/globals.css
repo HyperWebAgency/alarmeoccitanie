@@ -88,8 +88,8 @@
   }
 }
 
-/* Row height cap for the realisations gallery (ProjectGallery.tsx, desktop layout only) — bigger screens
-   only, so rows of fewer photos can grow a little instead of leaving the row short of the container. */
+/* Photo height in the realisations carousel (ProjectGallery.tsx, desktop: 3 photos side by side) — taller on
+   bigger screens only. */
 :root {
   --gallery-max-h: 400px;
 }

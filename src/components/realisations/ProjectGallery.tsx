@@ -15,31 +15,70 @@ function Arrow({ direction }: { direction: "left" | "right" }) {
 const control =
   "absolute flex size-12 cursor-pointer items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-white/25 max-[640px]:size-10";
 
-// Photos are never cropped: each keeps its own shape. They are laid out in rows where every photo has the
-// same height (width ∝ its aspect ratio), and a row never gets taller than MAX_H.
-// Desktop: one row up to 4 photos, then rows of 3 (5 → 3 + 2, 6 → 3 + 3). Mobile: pairs.
-// Desktop reads the --gallery-max-h custom property (globals.css raises it on big screens only)
-// so a row can grow past 400px there without touching mobile.
-const MAX_H = { desktop: "var(--gallery-max-h, 400px)", mobile: "320px" };
+// Bare chevrons on each side of the photos (no circle): big and dark so they're obvious, gold on hover.
+const arrowButton =
+  "flex h-20 w-14 shrink-0 cursor-pointer items-center justify-center text-navy transition-colors duration-200 disabled:cursor-default disabled:opacity-20 pointer-fine:enabled:hover:text-gold-dark max-[768px]:h-16 max-[768px]:w-8";
 
-function chunk<T>(items: T[], sizes: number[]) {
-  let start = 0;
-  return sizes.map((size) => items.slice(start, (start += size)));
+// `hidden` (everything fits): the arrow keeps its space so the photos don't shift once it's measured.
+function ArrowButton({ direction, onClick, disabled, hidden }: { direction: 1 | -1; onClick: () => void; disabled: boolean; hidden: boolean }) {
+  return (
+    <button
+      type="button"
+      aria-label={direction === -1 ? "Photo précédente" : "Photo suivante"}
+      onClick={onClick}
+      disabled={disabled}
+      aria-hidden={hidden || undefined}
+      tabIndex={hidden ? -1 : undefined}
+      className={`${arrowButton} ${hidden ? "invisible" : ""}`}
+    >
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="size-14 max-[768px]:size-9">
+        <path d={direction === -1 ? "M15 18l-6-6 6-6" : "M9 18l6-6-6-6"} />
+      </svg>
+    </button>
+  );
 }
 
-const desktopRows = (count: number) => (count <= 4 ? [count] : [3, count - 3]);
-const mobileRows = (count: number) => Array.from({ length: Math.ceil(count / 2) }, (_, i) => Math.min(2, count - i * 2));
-
-// Project photos (3 to 6 per project).
+// Project photos (3 to 6 per project) in a carousel: 3 photos visible on desktop, one large photo with the
+// next one peeking on mobile. The arrows on each side (or a swipe) move one photo at a time; they only show
+// when there are more photos than fit. Photos are never cropped (all are 3:4 and keep their own shape).
+// The photos area is as wide as 3 photos at the --gallery-max-h height (globals.css raises it on big screens).
 // Clicking a photo opens it full screen; arrows / keyboard / Escape to browse and close.
 export function ProjectGallery({ photos }: { photos: Photo[] }) {
   const [open, setOpen] = useState<number | null>(null);
-  const triggers = useRef(new Map<string, HTMLButtonElement>());
+  const [edges, setEdges] = useState({ prev: false, next: false });
+  const trackRef = useRef<HTMLUListElement>(null);
+  const triggers = useRef<(HTMLButtonElement | null)[]>([]);
 
-  // Focus goes back to the photo that was opened (in whichever layout is visible).
+  // Which arrows are usable, from the track's scroll position (both false = everything fits).
+  const updateEdges = useCallback(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    const prev = track.scrollLeft > 2;
+    const next = track.scrollLeft + track.clientWidth < track.scrollWidth - 2;
+    setEdges((e) => (e.prev === prev && e.next === next ? e : { prev, next }));
+  }, []);
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    updateEdges();
+    const observer = new ResizeObserver(updateEdges);
+    observer.observe(track);
+    return () => observer.disconnect();
+  }, [updateEdges]);
+
+  // One photo per click: a photo's width plus the gap between photos.
+  const scrollByPhoto = (direction: 1 | -1) => {
+    const track = trackRef.current;
+    const photo = track?.firstElementChild as HTMLElement | null;
+    if (!track || !photo) return;
+    const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+    track.scrollBy({ left: direction * (photo.offsetWidth + gap), behavior: "smooth" });
+  };
+
+  // Focus goes back to the photo that was opened (focusing it also scrolls it into view).
   const close = useCallback(() => {
-    const trigger = ["desktop", "mobile"].map((l) => triggers.current.get(`${l}-${open}`)).find((el) => el?.offsetParent);
-    trigger?.focus();
+    if (open !== null) triggers.current[open]?.focus();
     setOpen(null);
   }, [open]);
   const step = useCallback(
@@ -64,52 +103,53 @@ export function ProjectGallery({ photos }: { photos: Photo[] }) {
 
   return (
     <>
-      {/* Two copies of the rows (desktop / mobile grouping); the hidden one is display:none, so its
-          photos are neither loaded nor read by screen readers. */}
-      {(["desktop", "mobile"] as const).map((layout) => (
-        <div
-          key={layout}
-          className={`flex flex-col gap-4 max-[768px]:gap-3 ${layout === "desktop" ? "max-[768px]:hidden" : "min-[769px]:hidden"}`}
-        >
-          {chunk(
-            photos.map((photo, i) => ({ photo, i })),
-            layout === "desktop" ? desktopRows(photos.length) : mobileRows(photos.length),
-          ).map((row) => {
-            const ratios = row.map(({ photo }) => photo.width / photo.height);
-            const total = ratios.reduce((sum, r) => sum + r, 0);
-            return (
-              <div
-                key={row[0].i}
-                className="mx-auto flex w-full gap-4 max-[768px]:gap-3"
-                style={{ maxWidth: `calc(${total} * ${MAX_H[layout]} + ${row.length - 1}rem)` }}
+      <div
+        className="mx-auto flex items-center justify-center gap-2 max-[768px]:gap-1"
+        style={{ maxWidth: "calc(3 * 0.75 * var(--gallery-max-h, 400px) + 2rem + 2 * 4rem)" }}
+        role="region"
+        aria-roledescription="carrousel"
+        aria-label="Photos du chantier"
+      >
+        <ArrowButton direction={-1} onClick={() => scrollByPhoto(-1)} disabled={!edges.prev} hidden={!edges.prev && !edges.next} />
+
+        <div className="@container min-w-0 flex-1">
+          {/* w-max + max-w-full: centred when every photo fits, scrollable when they don't. */}
+          <ul
+            ref={trackRef}
+            onScroll={updateEdges}
+            className="mx-auto flex w-max max-w-full snap-x snap-mandatory gap-4 overflow-x-auto overflow-y-hidden scroll-smooth pb-4 [-webkit-overflow-scrolling:touch] [scrollbar-width:none] max-[768px]:gap-3 [&::-webkit-scrollbar]:hidden"
+          >
+            {photos.map((photo, i) => (
+              <li
+                key={photo.src}
+                className="w-[calc((100cqw-2rem)/3)] shrink-0 snap-start max-[768px]:w-[78cqw]"
+                style={{ aspectRatio: `${photo.width} / ${photo.height}` }}
               >
-                {row.map(({ photo, i }, j) => (
-                  <button
-                    key={photo.src}
-                    ref={(el) => {
-                      if (el) triggers.current.set(`${layout}-${i}`, el);
-                      else triggers.current.delete(`${layout}-${i}`);
-                    }}
-                    type="button"
-                    onClick={() => setOpen(i)}
-                    aria-label={`Agrandir la photo ${i + 1} sur ${photos.length}`}
-                    style={{ aspectRatio: `${photo.width} / ${photo.height}`, flex: `${ratios[j]} 1 0%` }}
-                    className="group relative min-w-0 cursor-zoom-in overflow-hidden rounded-[18px] bg-[#f0f0f0] shadow-[0_8px_30px_rgba(0,0,0,0.08)] max-[768px]:rounded-[14px]"
-                  >
-                    <Image
-                      src={photo.src}
-                      alt={photo.alt}
-                      fill
-                      sizes={layout === "desktop" ? "420px" : "50vw"}
-                      className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
-                    />
-                  </button>
-                ))}
-              </div>
-            );
-          })}
+                <button
+                  ref={(el) => {
+                    triggers.current[i] = el;
+                  }}
+                  type="button"
+                  onClick={() => setOpen(i)}
+                  aria-label={`Agrandir la photo ${i + 1} sur ${photos.length}`}
+                  className="group relative block size-full cursor-zoom-in overflow-hidden rounded-[18px] bg-[#f0f0f0] shadow-[0_8px_30px_rgba(0,0,0,0.08)] max-[768px]:rounded-[14px]"
+                >
+                  <Image
+                    src={photo.src}
+                    alt={photo.alt}
+                    fill
+                    preload={i === 0}
+                    sizes="(max-width: 768px) 78vw, 420px"
+                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+                  />
+                </button>
+              </li>
+            ))}
+          </ul>
         </div>
-      ))}
+
+        <ArrowButton direction={1} onClick={() => scrollByPhoto(1)} disabled={!edges.next} hidden={!edges.prev && !edges.next} />
+      </div>
 
       {open !== null && (
         <div
