@@ -44,6 +44,75 @@ const brands = {
 
 const allRealisations: Realisation[] = [
   {
+    slug: "installation-videosurveillance-primeur-montpellier",
+    title: "3 caméras Dahua 4 MP pour un primeur de fruits à Montpellier",
+    tags: ["Vidéosurveillance"],
+    year: "2026",
+    city: "Montpellier",
+    location: "Montpellier (34 - Hérault)",
+    image: {
+      src: "/images/realisations/installation-videosurveillance-primeur-montpellier/camera-dahua-4mp-exterieur-primeur-montpellier.webp",
+      alt: "Caméra Dahua 4 MP sur le mur extérieur d'un primeur de fruits à Montpellier, face aux véhicules",
+      width: 960,
+      height: 1280,
+    },
+    page: {
+      metaTitle: "Vidéosurveillance primeur de fruits à Montpellier | Alarme Occitanie",
+      metaDescription:
+        "Réalisation à Montpellier : 3 caméras Dahua 4 MP chez un primeur de fruits, contre le vol de carburant et de stock, visibles à distance jour et nuit.",
+      client: "Professionnel",
+      intro:
+        "Installation de vidéosurveillance chez un primeur de fruits à Montpellier : 3 caméras Dahua 4 MP, une à l'extérieur face aux véhicules, une à l'intérieur face au stock et une dans le bureau. Elles offrent une image nette même dans l'obscurité totale et se consultent à distance. L'installation a été réalisée en une journée.",
+      besoin:
+        "Le client voulait protéger ses camions contre le vol de carburant, surveiller son stock et assurer sa sécurité dans son bureau. Il souhaitait aussi pouvoir tout voir à distance, et partager cet accès avec ses collaborateurs.",
+      intervention: [
+        "Pose d'une caméra à l'extérieur, face aux véhicules, contre le vol de carburant.",
+        "Pose d'une caméra à l'intérieur, face au stock.",
+        "Pose d'une caméra dans le bureau du client.",
+        "3 caméras Dahua 4 MP avec vision nocturne : une image nette même dans l'obscurité totale.",
+        "Mise en place de la consultation à distance, avec un accès partagé entre le client et ses collaborateurs.",
+        "Installation réalisée en une journée, puis prise en main avec le client.",
+      ],
+      faq: [
+        {
+          question: "Comment protéger ses camions contre le vol de carburant ?",
+          answer:
+            "Chez ce primeur de fruits à Montpellier, nous avons installé une caméra Dahua 4 MP à l'extérieur, orientée vers les véhicules. Grâce à sa vision nocturne, elle filme une image nette jour et nuit, y compris dans l'obscurité totale.",
+        },
+        {
+          question: "Peut-on voir ses caméras à distance et partager l'accès avec ses collaborateurs ?",
+          answer:
+            "Oui. C'était une demande du client : nous avons mis en place la consultation à distance de ses 3 caméras, puis partagé l'accès avec ses collaborateurs, pour que chacun puisse voir les images sans être sur place.",
+        },
+        {
+          question: "Les caméras de surveillance voient-elles dans le noir complet ?",
+          answer:
+            "Oui, avec un modèle adapté. Les 3 caméras Dahua 4 MP installées ici offrent une image nette même dans l'obscurité totale, ce qui permet de surveiller les véhicules et le stock pendant la nuit.",
+        },
+        {
+          question: "Combien de temps dure l'installation de caméras chez un professionnel ?",
+          answer:
+            "Cela dépend du projet, du matériel et du nombre de caméras. Pour ce primeur, la pose des 3 caméras (extérieur, stock et bureau) et la mise en place de l'accès à distance ont été réalisées en une journée.",
+        },
+      ],
+      brands: [brands.dahua],
+      photos: [
+        {
+          src: "/images/realisations/installation-videosurveillance-primeur-montpellier/camera-dahua-stock-primeur-montpellier.webp",
+          alt: "Caméra Dahua dans l'angle d'un mur en béton, face au stock d'un primeur de fruits à Montpellier",
+          width: 1086,
+          height: 1448,
+        },
+        {
+          src: "/images/realisations/installation-videosurveillance-primeur-montpellier/camera-dome-dahua-bureau-primeur-montpellier.webp",
+          alt: "Caméra dôme Dahua fixée au plafond, dans l'angle du bureau d'un primeur de fruits à Montpellier",
+          width: 1536,
+          height: 2048,
+        },
+      ],
+    },
+  },
+  {
     slug: "installation-cameras-dahua-alarme-ajax-villa-montbazin",
     title: "Caméras Dahua 4 MP et alarme Ajax pour une villa à Montbazin",
     tags: ["Vidéosurveillance", "Alarme"],

@@ -3,7 +3,8 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   // Dev only: let the dev server's JS load when the site is opened via 127.0.0.1
   // or the local network IP (e.g. testing on a phone). Without this, buttons do nothing there.
-  allowedDevOrigins: ["127.0.0.1", "192.168.*.*"],
+  // Home networks are usually 192.168.x.x, some others 10.x.x.x.
+  allowedDevOrigins: ["127.0.0.1", "192.168.*.*", "10.*.*.*"],
 
   // Security headers on every response. None of them changes what crawlers see.
   // - Anti-clickjacking: no other website may show our pages inside an iframe.
